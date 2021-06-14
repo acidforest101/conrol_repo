@@ -1,11 +1,12 @@
 node slave1.puppet {
 
-  class { 'apache': }
+  package { "httpd": 
+    ensure => 'installed'
+  }
   
-    apache::vhost { 'apache':
-    port    => '8080',
-    docroot => '/var/www/html',
-     }
+  package { "php":
+    ensure => 'installed'
+  }
  
   file { '/root/README':
     ensure => absent,
@@ -13,5 +14,11 @@ node slave1.puppet {
 }
 
 node slave2.puppet {
-  package { "mc": ensure => 'latest' }
- }
+  package { "httpd": 
+    ensure => 'installed' 
+  }
+    
+  package { "php":
+    ensure => 'installed'
+  }
+}
