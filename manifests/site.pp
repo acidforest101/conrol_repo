@@ -1,8 +1,5 @@
 node slave1.puppet {
-
-  class { 'apache':
-    }
-  
+ 
   file { '/root/README':
     ensure => absent,
      }
