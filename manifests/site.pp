@@ -1,2 +1,3 @@
-
-anything
+file {  '/tmp/Demo':
+    content => "Hooray!"
+}   
