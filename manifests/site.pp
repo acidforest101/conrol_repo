@@ -1,11 +1,10 @@
 node slave1.puppet {
 
-  package { 'httpd': 
-    ensure => 'installed',
-  }
+  class { 'apache': }
   
-  package { 'php':
-    ensure => 'installed',
+  apache::vhost { 'static':
+    port    => '8080',
+    docroot => '/var/www/html',
   }
      
   file { '/var/www/html/index.html':
@@ -13,14 +12,8 @@ node slave1.puppet {
       source => 'https://github.com/acidforest101/control_repo/blob/ad53e4c1b15044998bbf2ef28e4e38b68690ac61/files/index.html',
   }
   
-  file { '/etc/httpd/conf.d/static.conf':
-      ensure => file,
-      source => 'https://github.com/acidforest101/control_repo/blob/e32f08a38c53f86eb1c33570c6f7722e7ad4df50/files/static.conf',
-  }
-  
   service { 'httpd':
-    ensure => 'running',
-    enable => 'true',
+    hasrestart => 'true',
   }
     
   file { '/root/README':
@@ -29,28 +22,21 @@ node slave1.puppet {
 }
 
 node slave2.puppet {
+
+  class { 'apache::mod::php': }
   
-  package { 'httpd': 
-    ensure => 'installed',
+  apache::vhost { 'dynamic':
+    port    => '8081',
+    docroot => '/var/www/html',
   }
   
-  package { 'php':
-    ensure => 'installed',
-  }
-   
   file { '/var/www/html/index.php':
       ensure => file,
       source => 'https://github.com/acidforest101/control_repo/blob/e32f08a38c53f86eb1c33570c6f7722e7ad4df50/files/index.php',
   }
   
-  file { '/etc/httpd/conf.d/dynamic.conf':
-      ensure => file,
-      source => 'https://github.com/acidforest101/control_repo/blob/e32f08a38c53f86eb1c33570c6f7722e7ad4df50/files/dynamic.conf',
-  }
-  
   service { 'httpd':
-    ensure => 'running',
-    enable => 'true',
+    hasrestart => 'true',
   }
  
   file { '/root/README':
