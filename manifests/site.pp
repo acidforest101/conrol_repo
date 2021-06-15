@@ -17,7 +17,7 @@ node slave1.puppet {
   }
   
   service { 'httpd':
-    hasrestart => 'true',
+    restart',
   }
 }
 
@@ -40,6 +40,6 @@ node slave2.puppet {
   }
   
   service { 'httpd':
-    hasrestart => 'true',
+    restart,
   }
 }
