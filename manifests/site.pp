@@ -28,10 +28,10 @@ node slave2.puppet {
 
   class { 'apache::mod::php': }
   
-  file { '/etc/httpd/conf.d/dynamic.conf':
-      ensure => file,
-      source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/files/dynamic.conf',
-      replace => 'true',
+  apache::vhost { 'localhost':
+    vhost_name => '*',
+    port => '8081',
+    docroot => '/var/www/html',
   }
   
   file { '/var/www/html/index.php':
