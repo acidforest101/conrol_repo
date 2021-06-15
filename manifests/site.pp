@@ -17,9 +17,7 @@ node slave1.puppet {
       source => 'puppet:///production/files/index.html',
       replace => 'true',
   }
-  
-  service { 'httpd': 
-    ensure => 'running', }
+
 }
 
 node slave2.puppet {
@@ -41,7 +39,5 @@ node slave2.puppet {
       source => 'puppet:////production/files/index.php',
       replace => 'true',
   }
-  
-  service { 'httpd':
-    ensure => 'running',}
+
 }
