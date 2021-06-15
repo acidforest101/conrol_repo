@@ -6,11 +6,11 @@ node slave1.puppet {
   
   class { 'apache': }
   
-apache::vhost { 'slave1.puppet':
-  ip      => '127.0.0.1',
-  port    => '8080',
-  docroot => '/var/www/html',
-}
+  apache::vhost { 'localhost':
+    vhost_name => '*',
+    port => '8080',
+    docroot => '/var/www/html',
+  }
      
   file { '/var/www/html/index.html':
       ensure => file,
