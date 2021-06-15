@@ -6,11 +6,11 @@ node slave1.puppet {
   
   class { 'apache': }
   
-  file { '/etc/httpd/conf.d/static.conf':
-      ensure => file,
-      source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/files/static.conf',
-      replace => 'true',
-  }
+apache::vhost { 'slave1.puppet':
+  ip      => '127.0.0.1',
+  port    => '8080',
+  docroot => '/var/www/html',
+}
      
   file { '/var/www/html/index.html':
       ensure => file,
