@@ -16,9 +16,7 @@ node slave1.puppet {
       source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/files/index.html',
   }
   
-  service { 'httpd':
-    restart
-  }
+  service { 'httpd': restart }
 }
 
 node slave2.puppet {
@@ -39,7 +37,5 @@ node slave2.puppet {
       source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/files/index.php',
   }
   
-  service { 'httpd':
-    restart
-  }
+  service { 'httpd': restart }
 }
