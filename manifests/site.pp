@@ -1,5 +1,9 @@
 node slave1.puppet {
-
+  
+  file { '/root/README':
+    ensure => 'absent',
+  }
+  
   class { 'apache': }
   
   apache::vhost { 'static':
@@ -15,13 +19,13 @@ node slave1.puppet {
   service { 'httpd':
     hasrestart => 'true',
   }
-    
-  file { '/root/README':
-    ensure => 'absent',
-  }
 }
 
 node slave2.puppet {
+
+  file { '/root/README':
+    ensure => 'absent',
+  }
 
   class { 'apache::mod::php': }
   
@@ -37,9 +41,5 @@ node slave2.puppet {
   
   service { 'httpd':
     hasrestart => 'true',
-  }
- 
-  file { '/root/README':
-    ensure => 'absent',
   }
 }
