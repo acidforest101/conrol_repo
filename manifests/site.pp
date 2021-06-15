@@ -17,7 +17,7 @@ node slave1.puppet {
   }
   
   service { 'httpd':
-    restart',
+    restart,
   }
 }
 
