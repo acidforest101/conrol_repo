@@ -41,3 +41,11 @@ node slave2.puppet {
   }
 
 }
+
+node master.puppet {
+  include nginx
+  nginx::resource::server { 'master':
+    listen_port => 80,
+    proxy       => 'http://192.168.33.12:8081',
+  }
+}
