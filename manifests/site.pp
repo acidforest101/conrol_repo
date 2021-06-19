@@ -1,5 +1,4 @@
 node slave1.puppet {
-  
   file { '/root/README':
     ensure => 'absent',
   }
@@ -19,6 +18,7 @@ node slave1.puppet {
   }
 
 }
+
 
 node slave2.puppet {
 
@@ -42,10 +42,31 @@ node slave2.puppet {
 
 }
 
+
 node master.puppet {
+
   include nginx
+
   nginx::resource::server { 'master':
     listen_port => 80,
     proxy       => 'http://192.168.33.12:8081',
+  }
+}
+
+node mineserver.puppet{
+
+  class { 'java' :
+    package => 'java-1.8.0-openjdk-devel',
+  }
+  
+  file {'/opt/minecraft/eula.txt':
+    ensure => file,
+    content => 'eula=true'
+  }
+  
+  file { '/opt/minecraft/server.jar':
+    ensure => file,
+    source => 'https://launcher.mojang.com/v1/objects/0a269b5f2c5b93b1712d0f5dc43b6182b9ab254e/server.jar',
+    replace => false,
   }
 }
