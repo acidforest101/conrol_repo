@@ -76,8 +76,12 @@ node mineserver.puppet{
     replace => false,
   }
   
-  systemd::unit_file { 'mineserver.service':
-    source => "puppet:///modules/mineserver/mineserver.service",
+  file { '/etc/systemd/system/mineserver.service':
+    ensure => file,
+    source => 'puppet:///modules/mineserver/mineserver.service',
+    owner => 'root',
+    group => 'root',
+    mode  => '0644',
   }
   
   service {'mineserver':
