@@ -71,7 +71,7 @@ node mineserver.puppet{
   }
   
   systemd::unit_file { 'mineserver.service':
-    source => "puppet:///modules/mineserver.service",
+    source => "puppet:///modules/mineserver/mineserver.service",
   }
   
   service {'mineserver':
