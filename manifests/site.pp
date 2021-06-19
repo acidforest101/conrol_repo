@@ -1,4 +1,5 @@
 node slave1.puppet {
+
   file { '/root/README':
     ensure => 'absent',
   }
@@ -53,10 +54,15 @@ node master.puppet {
   }
 }
 
+
 node mineserver.puppet{
 
   class { 'java' :
     package => 'java-1.8.0-openjdk-devel',
+  }
+  
+  file { '/opt/minecraft':
+    ensure => 'directory',
   }
   
   file {'/opt/minecraft/eula.txt':
