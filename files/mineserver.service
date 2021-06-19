@@ -1,0 +1,9 @@
+[Unit]
+Description = "Minecraft Game Server"
+
+[Service]
+WorkingDirectory = /opt/minecraft
+ExecStart = java -Xmx1024M -Xms1024M -jar minecraft_server.1.17.jar nogui
+
+[Install]
+WantedBy = multi-user.target
