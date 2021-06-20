@@ -34,7 +34,7 @@ node 'master.puppet' {
   include nginx
   nginx::resource::server { 'master':
     listen_port => 80,
-    proxy => 'http://192.168.33.12:8081',
+    proxy => '192.168.33.12:8081',
   }
 }
 node 'mineserver.puppet' {
