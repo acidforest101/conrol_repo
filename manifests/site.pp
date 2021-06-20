@@ -38,9 +38,7 @@ node 'master.puppet' {
   }
 }
 node 'mineserver.puppet' {
-  class { 'java':
-    package => 'java-1.8.0-openjdk-devel',
-  }
+  include java
   file { '/opt/minecraft':
     ensure => 'directory',
   }
