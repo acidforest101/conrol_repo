@@ -16,7 +16,7 @@ class profile::mineserver {
     source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/modules/mineserver/mineserver.service',
     owner => 'root',
     group => 'root',
-    mode  => '0644',
+    mode  => '0664',
   }
   service {'mineserver':
     ensure => running,
