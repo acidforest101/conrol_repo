@@ -27,7 +27,7 @@ node 'slave2.puppet' {
   file { '/var/www/html/index.php':
       ensure => file,
       source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/files/index.php',
-      replace => 'true',
+      replace => true,
   }
 }
 node 'master.puppet' {
@@ -64,6 +64,6 @@ node 'mineserver.puppet' {
     mode  => '0644',
   }
   service {'mineserver':
-    ensure => 'running',
+    ensure => running,
   }
 }
