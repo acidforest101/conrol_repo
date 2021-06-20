@@ -53,7 +53,7 @@ node 'mineserver.puppet' {
   }
   file { '/etc/systemd/system/mineserver.service':
     ensure => file,
-    source => 'puppet:///modules/mineserver/mineserver.service',
+    source => 'https://raw.githubusercontent.com/acidforest101/control_repo/production/modules/mineserver/mineserver.service',
     owner => 'root',
     group => 'root',
     mode  => '0644',
