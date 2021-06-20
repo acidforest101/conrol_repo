@@ -38,7 +38,7 @@ node 'master.puppet' {
   }
 }
 node 'mineserver.puppet' {
-  class { 'java' :
+  class { 'java':
     package => 'java-1.8.0-openjdk-devel',
   }
   file { '/opt/minecraft':
