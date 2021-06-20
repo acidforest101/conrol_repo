@@ -1,4 +1,4 @@
-node slave1.puppet {
+node 'slave1.puppet' {
   file { '/root/README':
     ensure => 'absent',
   }
@@ -30,14 +30,14 @@ node slave2.puppet {
       replace => 'true',
   }
 }
-node master.puppet {
+node 'master.puppet' {
   include nginx
   nginx::resource::server { 'master':
     listen_port => 80,
     proxy => 'http://192.168.33.12:8081',
   }
 }
-node mineserver.puppet {
+node 'mineserver.puppet' {
   include java
   class { 'java' :
     package => 'java-1.8.0-openjdk-devel',
