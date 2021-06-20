@@ -36,9 +36,6 @@ node 'master.puppet' {
     listen_port => 80,
     proxy => 'http://192.168.33.12:8081',
   }
-  service {'nginx':
-    ensure => 'restarted',
-  }
 }
 node 'mineserver.puppet' {
   include java
