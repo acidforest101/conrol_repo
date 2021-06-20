@@ -37,7 +37,7 @@ node master.puppet {
     proxy => 'http://192.168.33.12:8081',
   }
 }
-node mineserver.puppet{
+node mineserver.puppet {
   include java
   class { 'java' :
     package => 'java-1.8.0-openjdk-devel',
