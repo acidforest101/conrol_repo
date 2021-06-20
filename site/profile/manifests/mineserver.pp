@@ -17,8 +17,10 @@ class profile::mineserver {
     owner => 'root',
     group => 'root',
     mode  => '0664',
-  } ~>
-  Exec[systemd::systemctl::daemon_reload]
+  }
+  exec { 'systemd-daemon-reload':
+    command => '/bin/systemctl daemon-reload',
+  }
   service {'mineserver':
     ensure => running,
   }
