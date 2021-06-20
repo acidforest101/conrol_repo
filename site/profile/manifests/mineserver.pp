@@ -20,5 +20,6 @@ class profile::mineserver {
   }
   service {'mineserver':
     ensure => running,
+    require   => Class['systemd::systemctl::daemon_reload']
   }
 }
