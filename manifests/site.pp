@@ -63,11 +63,6 @@ node 'mineserver.puppet' {
     group => 'root',
     mode  => '0644',
   }
-  class systemd::daemon_reload {
-    exec { '/usr/bin/systemctl daemon-reload':
-      refreshonly => true,
-    }
-  }
   service {'mineserver':
     ensure => 'running',
   }
