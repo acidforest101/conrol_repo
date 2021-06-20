@@ -39,7 +39,7 @@ node 'master.puppet' {
 }
 node 'mineserver.puppet' {
   include java
-  package { 'jdk-16.0.1':
+  package { 'jdk-16.0.1_linux-aarch64_bin':
     provider => 'rpm',
     ensure => present,
     source => 'https://download.oracle.com/otn-pub/java/jdk/16.0.1+9/7147401fd7354114ac51ef3e1328291f/jdk-16.0.1_linux-aarch64_bin.rpm',
